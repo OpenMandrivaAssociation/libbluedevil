@@ -6,6 +6,7 @@ Release:       %mkrel 1
 License:       GPL
 URL:           http://www.kde.org
 Source0:       %name-%version.tar.bz2
+Patch0:        libbluedevil-1.7-fix-pkgconfig-install.patch
 BuildRequires: cmake
 BuildRequires: kde4-macros
 BuildRequires: qt4-devel
@@ -51,6 +52,7 @@ based on %{name} .
 
 %prep
 %setup -q
+%patch0 -p0
 
 %build
 %cmake_kde4
