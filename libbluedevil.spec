@@ -1,11 +1,15 @@
 Name:          libbluedevil
 Summary:       Qt-based library written in C++ to handle all Bluetooth functionality
 Group:         Graphical desktop/KDE
-Version:       1.8.1
-Release:       %mkrel 2
+Version:       1.9
+Release:       %mkrel 1
 License:       LGPLv2+
 URL:           https://projects.kde.org/projects/playground/libs/libbluedevil
-Source0:       http://media.ereslibre.es/2010/11/%name-v1.8-1.tar.bz2
+# Upstream did not release a tarball so we're using git
+# git clone git://anongit.kde.org/libbluedevil
+# git checkout v1.9
+
+Source0:       %name-v%{version}.tar.bz2
 BuildRequires: cmake
 BuildRequires: kde4-macros
 BuildRequires: qt4-devel
@@ -51,7 +55,7 @@ based on %{name} .
 #-----------------------------------------------------------------------------
 
 %prep
-%setup -qn %name-v1.8-1
+%setup -qn %name-v%{version}
 
 %build
 %cmake_kde4
