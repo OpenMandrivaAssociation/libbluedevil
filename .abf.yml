@@ -1,5 +1,6 @@
 removed_sources:
   libbluedevil-1.9.2.tar.bz2: 44aa52071d8b43e61dde27de5980471608362854
   libbluedevil-1.9.3.tar.bz2: d0afbdf3f3dc7725f73c225cc44a7263898ccf23
-sources:
   libbluedevil-1.9.4.tar.xz: 339faab641f16f62e5bd5ff8cac7179d3aa8e7ad
+sources:
+  libbluedevil-2.1.tar.xz: 3c0f10b01246461924134139b5af80641f5f88da
