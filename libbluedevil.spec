@@ -1,18 +1,19 @@
-%define major	2
+%define major	5
 %define libname	%mklibname bluedevil %{major}
 %define devname	%mklibname bluedevil -d
 
 Summary:	Qt-based library written in C++ to handle all Bluetooth functionality
 Name:		libbluedevil
 Group:		Graphical desktop/KDE
-Version:	2.1
-Release:	3
+Version:	5.2.2
+Release:	1
 License:	LGPLv2+
-Url:		https://projects.kde.org/projects/playground/libs/libname
-Source0:	ftp://ftp.kde.org/pub/kde/stable/%{name}/%{version}/src/%{name}-%{version}.tar.xz
+Url:		https://invent.kde.org/unmaintained/libbluedevil
+Source0:	https://invent.kde.org/unmaintained/libbluedevil/-/archive/v%{version}/libbluedevil-v%{version}.tar.bz2
 BuildRequires:	cmake
-BuildRequires:	kde4-macros
-BuildRequires:	qt4-devel
+BuildRequires:	cmake(ECM)
+BuildRequires:	cmake(Qt5Core)
+BuildRequires:	cmake(Qt5DBus)
 
 %description
 Qt-based library written in C++ to handle all Bluetooth functionality
@@ -36,20 +37,20 @@ This package contains header files needed if you wish to build applications
 based on %{name}.
 
 %prep
-%setup -q
+%autosetup -p1 -n %{name}-v%{version}
+%cmake_kde5
 
 %build
-%cmake_kde4
-%make
+%ninja_build -C build
 
 %install
-%makeinstall_std -C build
+%ninja_install -C build
 
 %files -n %{libname}
-%{_kde_libdir}/libbluedevil.so.%{major}*
+%{_libdir}/libbluedevil.so.%{major}*
 
 %files -n %{devname}
-%{_kde_includedir}/bluedevil
-%{_kde_libdir}/libbluedevil.so
-%{_kde_libdir}/pkgconfig/bluedevil.pc
+%{_includedir}/bluedevil
+%{_libdir}/libbluedevil.so
+%{_libdir}/pkgconfig/bluedevil.pc
 
